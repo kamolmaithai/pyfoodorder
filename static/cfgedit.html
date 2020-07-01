@@ -1,0 +1,331 @@
+
+<!doctype html>
+<html>
+<head>
+
+	<title>JavaScript CSV editor built with ucsv.js</title>
+</head>
+<style>
+.bt {
+	float: left;
+	margin: 1em;
+	padding: .5em;
+	border: outset 2px #ff0;
+	cursor: pointer;
+}
+
+.bt:active {
+	border-style: inset;
+}
+
+
+#import, #export {
+	background: #6f0;
+}
+
+#addrow, #addcol {
+	background: #fa0;
+}
+
+#import:hover, #export:hover {
+	background: #af0;
+}
+
+#addrow:hover, #addcol:hover {
+	background: #ff0;
+}
+
+
+#grid, #grid td {
+	border: 1px solid #999;
+	border-collapse: collapse;
+	min-width: 1em;
+	min-height: 1em;
+	cursor: cell;
+}
+
+#grid td:hover {
+	background: #acf;
+}
+
+.theadd,.thedel{
+    width:25px;
+}
+
+#inout {
+	float: left;
+	width: 400px;
+	height: 300px;
+}
+#confirmBox
+{
+   display:none;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    position: fixed;
+    width: 50%;
+    left: 25%;
+    margin-left: -150px;
+    padding: 6px 8px 8px;
+    box-sizing: border-box;
+    text-align: center;
+}
+#confirmBox .button {
+    background-color: #ccc;
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    padding: 2px;
+    text-align: center;
+    width: 80px;
+    cursor: pointer;
+}
+#confirmBox .button:hover
+{
+    background-color: #ddd;
+}
+#confirmBox .message
+{
+    text-align: left;
+    margin-bottom: 8px;
+}
+</style>
+<body>
+	<h1 id="whead">Config csv editor</h1>
+	<div id="confirmBox">
+    <div class="overlay"></div>
+    <div class="confirmBox">
+        <textarea class="message" id="inout" style="width:100%;"></textarea>
+        <span class="button yes">Save</span>
+        <span class="button no">Cancel</span>
+    </div>
+</div>
+	<table id="content"><tr>
+			
+		<p>Click on a cell to edit it. when finish then exported. Please <em>Avoid </em> , character</p>
+			<table id="grid" style="width:100%;"></table>
+
+		</tr><tr>
+				<span id="export" class="bt">Export grid to CSV &larr;</span><br>
+	</tr></table>
+<script src="./js/jquery.min.js" type="application/javascript"></script>
+<script>
+var CSVARRAY = [];
+document.getElementById("whead").innerHTML += " (config.csv)";
+readTextFile("./data/config.csv");
+
+
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                CSVARRAY = parseResult(rawFile.responseText);
+				createTable(CSVARRAY);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+function parseResult(result) {
+
+    var resultArray = [];
+    result.split("\r\n").forEach(function(row) {
+        var rowArray = [];
+        row.split(",").forEach(function(cell) {
+            rowArray.push(cell);
+        });
+        resultArray.push(rowArray);
+    });
+    return resultArray; 
+}
+
+function createTable(array) {
+    var content = "";
+
+    array.forEach(function(row) {
+        content += "<tr>";
+        row.forEach(function(cell) {
+            content += "<td>" + cell + "</td>" ;
+        });
+        content += "</tr>";
+    });
+    document.getElementById("grid").innerHTML = content;
+}
+
+function doConfirm(msg, yesFn, noFn) {
+    var confirmBox = $("#confirmBox");
+    confirmBox.find(".message").text(msg);
+    confirmBox.find(".yes,.no").unbind().click(function () {
+        confirmBox.hide();
+    });
+    confirmBox.find(".yes").click(yesFn);
+    confirmBox.find(".no").click(noFn);
+    confirmBox.show();
+}
+
+function isString(o) {
+	return Object.prototype.toString.apply(o) === '[object String]';
+}
+
+function sanitize_input(d) {
+	var rxIsNum = /^\d+$|^\.\d+$|^\d\.\d*$/;
+	if(isString(d)) {
+		// quote numbers that are strings
+		if(rxIsNum.test(d)) {
+			d = '"' + d + '"';
+		} else {
+			// escape < and > to avoid XSS
+			d = d.replace(/</g, '&lt;');
+			d = d.replace(/>/g, '&gt;');
+		}
+	// convert nulls to '*null*'
+	} else if(d === null) {
+		d = '*null*';
+	}
+	return d;
+}
+
+function exportdata() {
+	var i, j, arr = [], csv,
+	rxIsInt = /^\d+$/,
+	rxIsFloat = /^\d*\.\d+$|^\d+\.\d*$/,
+	rxQuotedNumber = /^"\d+"$|"\.\d+"$|^"\d+\.\d*"$/,
+	rows = $('#grid tr').not('thead tr');
+
+	// Walk the rows of the table and convert them into an array
+	rows.each( function() {
+		var row = [];
+		tds = $(this).find('td');
+		tds.each( function () {
+			if ($(this).attr('class') != "thedel") {
+				var itm = $(this).text();
+				// Since everything in the table was conveted to text when inserted
+				// we have to convert it back to a number here before we pass it to 
+				// arrayToCsv so it handles them correctly.
+				if(rxIsInt.test(itm)) {
+					itm = parseInt(itm, 10);
+				} else if (rxIsFloat.test(itm)) {
+					itm = parseFloat(itm, 10);
+				// convert '*null*' to null
+				} else if (itm === '*null*') {
+					itm = null;
+				// don't escape quote quoted numbers
+				// instead interpret them as strings containg numbers
+				} else if (rxQuotedNumber.test(itm)) {
+					itm = itm.replace(/"/g, '')
+				}
+				row.push(itm);
+			}
+		});
+		arr.push(row);
+	});
+
+	// Convert the array to csv
+	var CSV = new csvWriter();
+	csv = CSV.arrayToCSV(arr);
+
+	// display the generated csv in the textbox
+	doConfirm(csv, function yes() {
+            //do yesfunction();
+			var blob = new Blob([[csv]], { type: 'text/plain' });
+			var savefile = new File([blob], "config.csv", {type: "text/plain"});
+			var formdata = new FormData();
+			formdata.append('file', savefile);
+			var xhr = new XMLHttpRequest();
+			var url = encodeURI('./upload');
+			xhr.open('POST', url);
+			xhr.send(formdata);
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					alert("save successful");
+				}
+			}
+			
+        }, function no() {
+            // do nothing
+        });
+	//$('#inout').val(csv);
+}
+
+
+$(document).ready( function() {
+		// Add click handler to edit cells
+		$('#grid tr:not(:first-child) td').live('click', function () {
+			var newval = prompt('Please enter new value.', $(this).text());
+			$(this).text(newval);
+		});
+
+		// bind functions to import/export buttons
+		$('#export').click(exportdata);
+
+
+});
+
+/**
+ * Class for creating csv strings
+ * Handles multiple data types
+ * Objects are cast to Strings
+ **/
+
+function csvWriter(del, enc) {
+    this.del = del || ','; // CSV Delimiter
+    this.enc = enc || ''; // CSV Enclosure was '"'
+
+    // Convert Object to CSV column
+    this.escapeCol = function (col) {
+        if(isNaN(col)) {
+            // is not boolean or numeric
+            if (!col) {
+                // is null or undefined
+                col = '';
+            } else {
+                // is string or object
+                col = String(col);
+                if (col.length > 0) {
+                    // use regex to test for del, enc, \r or \n
+                    // if(new RegExp( '[' + this.del + this.enc + '\r\n]' ).test(col)) {
+
+                    // escape inline enclosure
+                    col = col.split( this.enc ).join( this.enc + this.enc );
+
+                    // wrap with enclosure
+                    col = this.enc + col + this.enc;
+                }
+            }
+        }
+        return col;
+    };
+
+    // Convert an Array of columns into an escaped CSV row
+    this.arrayToRow = function (arr) {
+        var arr2 = arr.slice(0);
+
+        var i, ii = arr2.length;
+        for(i = 0; i < ii; i++) {
+            arr2[i] = this.escapeCol(arr2[i]);
+        }
+        return arr2.join(this.del);
+    };
+
+    // Convert a two-dimensional Array into an escaped multi-row CSV 
+    this.arrayToCSV = function (arr) {
+        var arr2 = arr.slice(0);
+
+        var i, ii = arr2.length;
+        for(i = 0; i < ii; i++) {
+            arr2[i] = this.arrayToRow(arr2[i]);
+        }
+        return arr2.join("\r\n"); //was "\r\n"
+    };
+}
+</script>
+</body>
+</html>

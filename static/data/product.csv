@@ -1,0 +1,81 @@
+1,pName,groupName,pPrice, pDesc,imgSrc,pOption,pActive, pRemark,spicy,ingredient,sauce-type,decorate,dish-type
+2,Spring Rolls (2),APPETIZERS,2.75,Glass noodles and vegetables deep fried in an egg roll wrapper and served with Thai duck sauce,A01.jpg,,1,,,i0000000000000000000000000000000000000,sweet venega carrot,,r1
+3,Satay (4),APPETIZERS,5.75,Chicken or pork skewers grilled and served with a spicy peanut sauce and a tangy cucumber sauce,A02.jpg,Chicken|Pork,1,,,i0000000000000000000000000000000000000,peanut & tangy cucumber,,r2
+4,Tord Mun Pla (8),APPETIZERS,5.75,Deep fried fish cakes served with a tangycucumber sauce.,A03.jpg,,1,,1,i0000000000000000000000000000000000000,tangy cucumber,,r1
+5,Larb,APPETIZERS,6.25,Ground chicken; pork or beef cooked with onion. carrots; cilantro and scallions in a spicy and sour sauce on a bed of lettuce.,A04.jpg,G. Ch|G.Pk|G.Bf|Shrimp:+3|Squid:+3,1,,2,i0000000000000000100000110000000000000,spicy and sour,lettuce on bed,c2
+6,Naam Sod,APPETIZERS,6.25,Ground pork with ginger; onions; carrots; peanuts; cilantro and scallions in a spicy and sour sauce on a bed of lettuce,A05.jpg,,1,,1,i0000000000000000100000110001100000000,spicy and sour,lettuce on bed,c2
+7,Yum Nam Tok,APPETIZERS,6.25,Char-broiled beef with onions; carrots; tomatoes; cucumbers. cilantro; scallions in a spicy a sour sauce.,A06.jpg,,1,,2,i0000000000000001100000110000000000000,spicy and sour,lettuce on bed,c2
+8,Yum Yuan,APPETIZERS,6.25,Thai salad made with cabbage; carrots; chicken; shrimp; and peanuts in a spicy and sour sauce,A07.jpg,Chicken|Shrimp:+3,1,,1,i0000000000000000000000100010100000000,spicy and sour,lettuce on bed,c2
+9,Yum Pla Muek,APPETIZERS,6.75,Squid salad with onions; carrots; cilantro; scallions; and Chili oil,A08.jpg,,1,,2,i0000000000000000100000110000000000000,Chili oil,lettuce on bed,c2
+10,Fresh Roll (2),APPETIZERS,5.5,Shrimp or tofu with lettuce; basil; cucumber; and Vermicelli wrapped in rice paper and served with our special sauce,A09.jpg,,1,,,i0000000000000001000000000100000010000,G. peanut & Hoisin sauce,wrap withrice paper,r1
+11,Butterfly Shrimps (5),APPETIZERS,6.75,Deep fried shrimp and ginger wrapped in awanton sheet and served with That duck sauce,A10.jpg,,1,,,i0000000000000000000000000000000000000,sweet venega carrot,,r1
+12,Fried Tofu,APPETIZERS,4.75,Fried tofu served with ground peanuts andsweet chili sauce,A11.jpg,,1,,,i0000000000000000000000000000000000000,g.peanut & sweet chilli,,r1
+13,Thai Chicken Wings,APPETIZERS,4.75,Chicken wings served with that sweet chili sauce,A12.jpg,,1,,1,i0000000000000000000000000000000000000,thai sweet chilli,,r1
+14,Fried Dumpling (7),APPETIZERS,5.75,Deep fried dumpling filled with pork; cabbage; onion; ground ginger served with our special soy sauce,A14.jpg,,1,,,i0000000000000000000000000000000000000,soy sauce,,b2
+15,Goong Ghoo Chee,CURRY,14.75,Shrimp; julienred kaffir lime leaves; and mushrooms with Thai curry sauce,C1.jpg,,1,,2,i0001000000000000000000000000000000000,choo chee & Coconut/milk,,b1
+16,Penang,CURRY,12.75,Chicken or beef in Thai curry sauce with jubenned kalir lime leaves.,C2.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,2,i0000000000000000000000000000000000000,panang & Coconut/milk,,b2
+17,Kang Dang Gai,CURRY,9.75,Chicken; bamboo shoots; green peas and basil in red Thai curry,C3.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,2,i0000100000000000001000000000000000000,kang dang & Coconut/milk,,b2
+18,Kari Gai,CURRY,9.75,Chicken & potatoes with onions in yellow Thai curry,C4.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,2,i0000000100010000000000000000000000000,kari& Coconut/milk,,b2
+19,Mussaman,CURRY,9.75,Chicken or beef; potatoes; and peanuts in a Southern Thai curry,C5.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,1,i0000000000010000000000000000100000000,massaman & Coconut/milk,,b2
+20,Gang Kiew whan Goong,CURRY,12.75,Shrimp; pineapple; green beans; and basil in green Thai curry,C6.jpg,Chicken:-3|Pork:-3|Beef:-3|Shrimp|Squid|Duck,1,,2,i0000010000001000000000000000000000000,green curry & Coconut/milk,,b2
+21,Ped Choo Chee,DUCK,14.75,Duck with carrots and green beans in Choo Chee curry sauce garnished with kaf fir lime.,DK1.jpg,,1,,2,i0000001000001000000000000000000000000,choo chee & Coconut/milk,,b2
+22,Kang Dang Ped,DUCK,12.75,Duck. pineapples peas and tomatoes in red Thai curry,DK2.jpg,,1,,2,i0000001000000100000000000000000000000,kang dang & Coconut/milk,,b2
+23,Ped Pad kra Prow,DUCK,14.75,Duck stir-fried with onions; mushrooms; carrots;bell peppers; green onions; and basil,DK3.jpg,,1,,3,i0000001111000000000000000000000000000,Oyster & soy sauce,,o1
+24,Kao Na Gai,ENTREES,9.75,Chicken; mushrooms; onions; falapeno; cilantro and scallions in brown sauce over rice.,E1.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0000000100000010110000000000000001000,brown sauce,cover rice,c1
+25,Pad Kra Prow,ENTREES,10.75,Chicken; pork; or beef stir-fried with carrots; bell peppers; onions; green onions; mushroom; and basil,E2.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,2,i0000000111100000010000000000000000000,Oyster & soy sauce,,o1
+26,Pad Prik Khing,ENTREES,9.75,Chicken; pork; or beef stir-fried with carrots; green beans; onions; jukenned kaf fir lime leaves; and chili paste.,E3.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,1,i0000001101000000000000000000001000001,chiili paste,,o1
+27,Gai Pad Med Ma-Muang Him Ma Porn,ENTREES,1.75,Chicken and cashew nuts sauteed with carrots; bell peppers; onions; green onions; mushrooms; and dried chili peppers in a tasty gravy sauce.,E4.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,1,i0000001111000000010000000000000000000,tasty gravy sauce,,o1
+28,Pad Pak Gail Moo/ Neau,ENTREES,9.75,Chicken; pork; or beef stir-fried with carrots; bell peppers onions; green onions; mushroom; baby corn; snow peas; and broccoli in garlic sauce.,E5.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0111001111100000000000000000000000000,garlic sauce,,o1
+29,Neau Pad Nam Mun Hoi,ENTREES,9.75,Beef sauteed with carrots; bell peppers; onions; green onions; and mushrooms in oyster sauce.,E6.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0001001111000000000000000000000000000,Oyster sauce,,o1
+30,Pad Kratiem Prik Thai,ENTREES,12.75,Chicken or pork with cilantro and scallions in garlic sauce with a dash of black pepper on a bed of lettuce;,E7.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0000000000000000100000000100000000000,"garlic, Oyster & black source",lettuce on bed,o1
+31,Gai Pad khing,ENTREES,11.75,Chicken and ginger sauteed with carrots; bell peppers; onions; mushrooms and snow peas in a bean sauce,E8.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0010101110000000000000000000100000000,bean sauce,,o1
+32,Pla Lard Prik,FISH,16.95,Deep fried fish ; chili; bell peppers; onions. garlic sauce; basil,F1.jpg,,1,,3,i0000000110000000000000000000000000000,Oyster & soy bean sauce,chili paste cover,f1
+33,Pla Choo Chee,FISH,16.95,Deep fried fish in Thai curry sauce with jubenned kaffir lime leaves,F2.jpg,,1,,2,i0000000000000000000000000000000100000,choo chee & Coconut/milk,,f1
+34,Pla Sam Ros,FISH,16.95,Deep fried fish with a special three-flavored sauce.,F3.jpg,,1,,1,i0000000000000000000000000000000000000,3 favours sauce,,f1
+35,Pla Priew Whan,FISH,16.95,Deep fried fish with pineapple and mixed vegetables in a sweet & sour sauce,F4.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0011011110000100000000000000000000000,sweet & sour,,f1
+36,Kao Na Gai,LUNCH,7.95,Kao Na Gal,E1.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0000000100000010110000000000000001000,brown sauce,cover rice,c1
+37,Pad Kra Prow,LUNCH,7.95,Pad Kra Prow fill,E2.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,3,i0000000111100000010000000000000000000,Chilli paste /w Oyster & soy sauce,,r1
+38,Pad Prik Khing,LUNCH,7.95,Pad Prik Khing,E8.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,1,i0000001101000000000000000000001000001,Oyster & soy bean sauce,,r1
+39,Gai Pad Med Ma-Muang Him Ma Parn,LUNCH,8.25,Gai Pad Med Ma-Muang Him Ma Parn 1,E4.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,1,i0000001111000000010000000000000000000,tasty gravy sauce,,r1
+40,Pad Pak,LUNCH,7.95,Pad Pak,LS5.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0111001111100000000000000000000000000,garlic sauce,,r1
+41,Neau Pad Nam Mun Hoi,LUNCH,7.95,Neau Pad Nam Mun Hoi,E6.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0001001111000000000000000000000000000,Oyster sauce,,r1
+42,Pad Kratiem Prik Thai,LUNCH,8.25,Pad Kratiem Prik Thai,E7.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0000000000000000100000000100000000000,garlic &�,lettuce on bed,r1
+43,Moo Priew Whan,LUNCH,7.95,Moo Priew Whan,LS8.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0011011110000100000000000000000000000,sweet & sour,,r1
+44,Goong Pad Num Prik Pao,LUNCH,8.95,Goong Pad Num Prik Pao if,SF2.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,2,i0001001111000000000000000000000010000,chili oil,,r1
+45,Kang Dang Gai,LUNCH,7.95,Kong bang Gai,C3.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,2,i0000100000000000001000000000000000000,kang dang & Coconut/milk,,b2
+46,Kari Gai,LUNCH,7.95,Kari Gai,C4.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,2,i0000000100010000000000000000000000000,kari& Coconut/milk,,b2
+47,Mussoman,LUNCH,7.95,Mussoman,C5.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,1,i0000000000010000000000000000100000000,massaman & Coconut/milk,,b2
+48,Kuay Tiew Neou Sub,LUNCH,7.95,Kuay Tiew Neou Sub,LS13.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,1,i0000000000000100000111000000000000010,Thai curry sauce,,o3
+49,Pad Thai,LUNCH,8.25,Pad Thai,N1.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i1000000001000000000000001000010000100,pad thai,cover /w b.sprout,o3
+50,Kao Pad,LUNCH,7.95,Kao Pad Gai / Moo / Neau,LS15.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i1000000000000000001111000000000001000,Oyster & soy sauce,,c1
+51,Kao Pad Saparot Mai Thai,LUNCH,8.25,Kao Pad Saparot Mai Thai,LS16.jpg,Chicken|Pork|Beef|Shrimp:+3|Squid:+3|Duck:+3,1,,,i0000010000000000001111000000000001000,Oyster & soy sauce,,c1
+52,Pad Thai,NOODLES,11.75,Rice noodles with shrimp; eggs; ground peanuts; green onions; and bean sprouts.,N1.jpg,,1,,,i1000000001000000000000001000010000100,pad thai,cover /w b.sprout,o2
+53,Kuoy Tiew Lard Na,NOODLES,9.75,Rice noodles with chicken; pork. or beef;broccoli; and carrots in a gravy bean sauce,N2.jpg,,1,,,i0100001000000000000000000000000000010,gravy bean,,o2
+54,Kuay Tiew Pad See-Ew,NOODLES,9.75,Rice noodles with beef or chicken; broccoli; terrorsand soy sauce,N3.jpg,,1,,,i0100001000000000000000000000000000010,Oyster & black sauce,,o2
+55,Kuay Tiew Neau Sub,NOODLES,9.75,Rice noodles with ground beef; diced onions; carrots. tomatoes; and bell peppers in Thai curry sauce.,N4.jpg,,1,,1,i0000000000000100000111000000000000010,Kari & Oyster-black sauce,,o2
+56,Kuay Tiew Gai Kua,NOODLES,9.75,Rice noodles stir-fried with chicken. eggs;green onions; and bean sprouts on a bed of lettuce,N5.jpg,,1,,,i1000000001000000000000001000000000010,Oyster & black sauce,,o2
+57,Kuay Tiew Pad Kee Mao,NOODLES,12.75,Rice noodles with chicken; pork; or beef; carrots; bell peppers; onions; green onions. and basil,N6.jpg,,1,,3,i0000001111000000000000000000000000010,Oyster & soy sauce,,o2
+58,Kao Pad Pak,FRIED_RICE,8.75,Fried rice with eggs; carrots; onions; bell peppers; broccoli and snow peas.,R1.jpg,,1,,,i1110000000000000000111000000000001000,Oyster & soy sauce,,c1
+59,Kao pad Goong,FRIED_RICE,10.75,Shrimp fried rice with egg; diced onions; bell peppers; carrots; and green peas.,R1.jpg,,1,,,i1000000000000000001111000000000001000,Oyster & soy sauce,,c1
+60,Kao Pad Gai/ Moo/ Neau,FRIED_RICE,9.75,chicken; pork; or beef fried rice with egg; diced onions; bell peppers; carrots; and green peas.,R1.jpg,,1,,,i1000000000000000001111000000000001000,Oyster & soy sauce,,c1
+61,kap pad saparot Mai Thai,FRIED_RICE,9.75,Pineapple;rice ;chicken; onions; carrots; bell peppers; green peas.,R1.jpg,,1,,,i0000010000000000001111000000000001000,Oyster & soy sauce,,c1
+62,Kao Pad Kra Prow,FRIED_RICE,9.75,Ground chicken| Ground pork| Ground beef ; egg; mushrooms; basil.,R1.jpg,,1,,3,i1001000000000000000000000000000011000,Oyster & soy sauce,,c1
+63,Tom Yum Gai,SOUP,3.25,Chicken in lemongrass soup with mushrooms;cilantro; and scallions,S1.jpg,,1,,2,i0001000000000000100000000000000000000,lemongrass soup,,b3
+64,Tom Yum Goong,SOUP,3.75,Shrimp rn lemongross soup with mushrooms;cilantro; and scallions.,S2.jpg,,1,,2,i0001000000000000100000000000000000000,lemongrass soup,,b3
+65,Tom Kha Gai,SOUP,3.5,Chicken in a hot & sour coconut soup with mushrooms;cilantro; and scallions,S3.jpg,,1,,1,i0001000000000000100000000000000000000,Hot & Sweet coconut soup,,b3
+66,Goong Pad Ped,SEAFOOD,13.75,Shrimp with ground chili peppers stir-fried with garlic; onions; green beans; carrots; and basil,SF1.jpg,,1,,3,i0000001100001000000000000000000000000,garlic & ground chilli pepper,,o1
+67,Goong Pad Num Prik Pao,SEAFOOD,14.75,Shrimp and chili oil cooked with onions; mushrooms; carrots; green onions; basil; and bell peppers,SF2.jpg,,1,,2,i0001001111000000000000000000000010000,chili oil,,o1
+68,Pad Talay Mai Thai,SEAFOOD,15.75,A seafood medley sauteed in a spicy sauce with shrimp; scallops; squid; snow peas; mushrooms; basil; carrots; onions; bell peppers; green onions; and baby corn,SF3.jpg,,1,,3,i0011001111100000000000000000000010000,spicy and sour,,o1
+69,Goong Pad pak,SEAFOOD,12.75,Shrimp sauteed with carrots; bell peppers; onions; green onions; mushrooms; baby corn; snow peas; and broccoli In garlic sauce,SF4.jpg,,1,,,i0111001111100000000000000000000000000,spicy sauce,,o1
+70,Pla Muck Pad Kra Prow,SEAFOOD,12.75,Sliced squid sauteed with onions; mushrooms; carrots; bell peppers; green onions; and basil,SF5.jpg,,1,,3,i0001001111000000000000000000000010000,garlic sauce,,o1
+71,Goong Priew Whan,SEAFOOD,12.75,Shrimp; pineapple; snow peas; tomatoes mushrooms; carrots; onions; and bell peppers in a sweet & sour sauce,SF6.jpg,,1,,,i0011011110000100000000000000000000000,sweet & sour,,o1
+72,Yum Talay,SEAFOOD,15.75,Scallops; squid; shrimp drenched in chili oil and lime juice with onions; carrots; cilantro; scallions; cucumbers; tomatoes on a bed of lettuce,SF7.jpg,,1,,3,i0000000000000110100000110000000000000,spicy and sour,,o1
+73,Pad Mung savirat,VEGETARIAN,8.75,Stir-fried tofu with carrots; bell peppers; onions; green onions; mushrooms; baby corn; snow peas; and broccoli in a hot garlic sauce.,R1.jpg,,1,,1,i0111001111100000000000000000000000000,garlic sauce,with tofu,o1
+74,Pad Pak,VEGETARIAN,8.75,carrots; bell peppers; onions; green onions; mushrooms; baby corn; snow peas; and broccoli sauteed in garlic garlic sauce.,R1.jpg,,1,,,i0111001111100000000000000000000000000,garlic sauce,,o1
+75,Tao Hoo Prik khing,VEGETARIAN,8.75,Stir-fried tofu with carrots; green beans; onions; julienned kaffir lime leaves; and chili paste.,R1.jpg,,1,,1,i0000001100000000000000000000000100000,chili paste & Soy bean sauce,,o1
+76,Gang Dang Tao Hoo,VEGETARIAN,8.75,Tofu with bamboo shoots; green peas and basil in red Thai curry.,R1.jpg,,1,,2,i0000100000000000000100000000000000000,Kang Dang & Coconut/milk,,b2
+77,Sweet Sticky Rice and Mango (Seasonal),SWEET,4.75,Sweet Sticky Rice and Mango (Seasonal),SW1.jpg,,1,,,i0000000000000000000000000000000000000,,,c3
+78,Sweet Sticky Rice and Custard,SWEET,3.75,Sweet Sticky Rice and Custard,SW2.jpg,,1,,,i0000000000000000000000000000000000000,,,c3
+79,Coconut Cake,SWEET,3.75,Coconut Cake,SW3.jpg,,1,,,i0000000000000000000000000000000000000,,,c3
+80,Fried Cheesecake,SWEET,4.75,Fried Cheesecake,SW4.jpg,,1,,,i0000000000000000000000000000000000000,,,c3
+81,Flan (Caramel Custard),SWEET,5.25,Flan (Caramel Custard),SW5.jpg,,1,,,i0000000000000000000000000000000000000,,,c3

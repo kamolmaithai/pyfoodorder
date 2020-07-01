@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>
+         Food Table Menu 
+        </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- css -->
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/styles.min.css?v=2">
+		<link rel="stylesheet" href="./css/gfont.css">
+
+	 <script src="./js/tmenu.js"></script>
+	 	<link rel="stylesheet" href="./css/tmenu.css">
+	<script src="js/toastr.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<link rel="stylesheet" href="./css/toastr.min.css">
+	 <script src="./js/jquery.star-rating-svg.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/star-rating-svg.css">
+
+	 
+	     <!-- IE / Edge babel polyfill -->
+    <script src="./js/polyfill.min.js"></script>
+
+    <!-- jPList Library -->
+    <script src="./js/jplist.min.js"></script> 
+	
+    <!--<link href="/js/jplist.styles.css" rel="stylesheet" type="text/css" />-->
+    <link href="./css/food.css" rel="stylesheet" type="text/css">
+	<style>
+	.container-popup {
+    position: relative;
+    position: fixed;
+	display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.8);
+	z-index: 9001;
+}
+
+.popup1, .popup2, popup3 {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+	display: none;
+    top: 5%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+	background: rgba(255, 239, 204,.8);
+	z-index: 9001;
+}
+
+.kbadge {
+  padding: 5px 10px;
+  border-radius: 50%;
+  color: white;
+}
+
+#active0{
+pointer-events:none;
+filter: blur(2px);
+}
+.displaynone {
+display : none;
+}
+.stars {
+    position: relative;
+	font-size: 18pt;
+	display : inline-block;
+}
+
+.stars:before {	
+    content: "\2606\2606\2606\2606\2606\2606\2606\2606\2606\2606";
+    float: left;
+    z-index: 1;
+}
+
+.stars .percent {
+    position: absolute;
+    left: 0;
+    float: left;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.stars .percent:after {	
+    content: "\2605\2605\2605\2605\2605\2605\2605\2605\2605\2605";
+    color: rgb(255, 0, 0);
+}
+
+	</style>
+
+    </head>
+    <body>
+	<div id="snackbar"></div>
+		<div class="container-popup"><p style="position:absolute; left:80%; width:10%; height:10%;"><button class="button1" style="background-color:red; color:white;" onclick="hideallpop();">X close</button></p>
+		<div class="popup1"><div id="curId" = style="display:none;"></div>
+		<h5 id="notehead"></h5>
+		Spicy:
+		<div class="my-rating" id="curStar"></div>
+		Note:
+		<input id="ordnote" type="text" size="60" value=""><br>
+		<button onclick="note2textbox();">Add Note</button>
+		
+		</div>
+		<div class="popup2"><h2 class="text-center">Cart</h2><div class="cart"></div></div>
+		<div class="popup3" style="text-align: center; valign:center;" ><br><br><br><br><br><br><img id="popimg" width="400px;" ></div>
+		</div>
+		
+			<div id="tablepanel"   style="position:fixed; left:85%; top:20%; width:auto; height:auto; border:1px solid red; z-index:1;" >
+			<a href="javascript:void(0);" onclick="showpop(2);">Cart <span id="cartTotal" class="kbadge" style="background:red;">0</span></a>
+	</div>
+
+    <main role="main" >
+
+        <div class="py-3 controls-panel control-top-panel">
+            <div class="container">
+
+
+
+			<div class="row-2 mb-2 mr-3">
+                    <div class="col mb-2">
+
+                        <div class="input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Filter By:</span>
+                            </div>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path="default" data-group="group1" name="buttons-text-filter" data-text="" data-selected="true" >
+                               <img src="./icons/all.png"><div class="d-none d-sm-none d-md-inline-block"> All</div>
+                            </button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="APPETIZERS" >
+                                <img src="./icons/dumpling.png"><div class="d-none d-sm-none d-md-inline-block">Appet izers</div>
+								</button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="SOUP" >
+                                <img src="./icons/soup.png"><div class="d-none d-sm-none d-md-inline-block">Soup</div>
+                            </button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="ENTREES" >
+                                <img src="./icons/serving-dish.png"><div class="d-none d-sm-none d-md-inline-block">Entrée</div>
+                            </button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="CURRY" >
+                                <img src="./icons/curry.png"><div class="d-none d-sm-none d-md-inline-block">Curry</div>
+                            </button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="SEAFOOD" >
+                                <img src="./icons/shrimp.png"><div class="d-none d-sm-none d-md-inline-block">Seafood</div>
+                            </button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="FISH" >
+                                <img src="./icons/fish.png"><div class="d-none d-sm-none d-md-inline-block">Fish</div>
+                            </button>
+							<button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="DUCK" >
+                                <img src="./icons/peking-duck.png"><div class="d-none d-sm-none d-md-inline-block">Duck</div>
+                            </button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="NOODLES" >
+                                <img src="./icons/spaguetti.png"><div class="d-none d-sm-none d-md-inline-block">Noodles</div>
+                            </button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="LUNCH" >
+                                <img src="./icons/lunch-box.png"><div class="d-none d-sm-none d-md-inline-block">Lunch</div>
+                            </button>
+
+                            <button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="FRIED_RICE" >
+                                <img src="./icons/fried-rice.png"><div class="d-none d-sm-none d-md-inline-block">Fried Rice</div>
+                            </button>
+							
+							<button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="VEGETARIAN" >
+                                <img src="./icons/salad.png"><div class="d-none d-sm-none d-md-inline-block">Vegetarian</div>
+                            </button>
+							
+							<button class="form-control" type="button" data-jplist-control="buttons-text-filter" data-path=".badge" data-group="group1" name="buttons-text-filter" data-text="SWEET" >
+                                <img src="./icons/cake.png"><div class="d-none d-sm-none d-md-inline-block">Sweet</div>
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row mb-2 mr-3">
+
+                    <div class="col flex flex-wrap align-items-start">
+
+                        <!-- pagination control -->
+						<div
+								data-jplist-control="pagination"
+								data-group="group1"
+								data-items-per-page="6"
+								data-current-page="0"
+								data-name="pagination1">
+
+							<button type="button" data-type="first">«</button>
+							<button type="button" data-type="prev">‹</button>
+
+							<div class="jplist-holder" data-type="pages" style="display:inline;">
+								<button type="button" data-type="page">Page {pageNumber}</button>
+							</div>
+
+							<button type="button" data-type="next">›</button>
+							<button type="button" data-type="last">»</button>
+						</div>
+
+
+
+                        </nav>
+
+                    </div>
+
+                </div>
+				
+				<!-- content to paginate -->
+				
+					   <!-- no results control 
+						<div class="col text-center" data-jplist-control="no-results" data-group="group1" data-name="no-results" style="display: none;">No Results Found</div>
+						-->
+					<div id="grid"></div>
+				
+				
+	           </div>
+        </div>
+	
+				
+	
+		
+    </main>
+
+<script>
+
+</script>
+<script>
+
+ var script_url = "https://script.google.com/macros/s/keyid/exec";
+ 		
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+				createContent(parseResult(rawFile.responseText));
+				initcart();
+				jplist.init();
+				initnote();
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+function readGoogleSheet(sheetname)
+{
+    var url = script_url+"?sheetname="+sheetname;
+	fetch(url)
+		.then((response) => response.text())
+		.then((text) => {
+			if (text.startsWith("fail")) {
+				showToast(text);
+			} else {
+				showToast('load success');
+			}
+			createContent(parseResult(text));
+				initcart();
+				jplist.init();
+				initnote();
+		})
+		.catch((error) => {
+			showToast('Unexpected error connecting database');
+		})  
+}
+
+
+
+function parseResult(result) {
+
+    var resultArray = [];
+    result.split("\r\n").forEach(function(row) {
+        var rowArray = [];
+        row.split(",").forEach(function(cell) {
+            rowArray.push(cell);
+        });
+        resultArray.push(rowArray);
+    });
+    return resultArray; 
+}
+
+String.prototype.replaceAll = function(search, replace) {
+if (replace === undefined) {
+    return this.toString();
+}
+return this.split(search).join(replace);
+}
+
+function createContent(array) {
+	var gridhtml = '<div data-jplist-group="group1" class="products">';
+	var template = '<div class="product" data-jplist-item="" id="active{{pActive}}"> \
+					<img class="product__image" src="./images/small/{{imgSrc}}" alt="" onclick="popimage(this);"> \
+					<h3 class="product__name" id="{{autoid}}">{{pId}}-{{pName}}{{cond1}}</h3> \
+					<h3 class="product__desc"><span class="badge badge-info">{{groupName}}</span></h3> \
+					<h3 class="product__price" id="1000{{autoid}}" baseprice="{{pPrice}}">{{pPrice}}</h3>\
+					<h7 class="product__desc">{{pDesc}} </h7><br>	\
+					<h7 class="product__desc">{{pOption}} </h7><br>	\
+					<h7 class="product__desc">{{pRemark}}	 </h7><br>	\
+					<h7 class="product__desc" id="3000{{autoid}}" ingredient="{{ingredient}}">{{spicy}}</h7><br> \
+					<button class="btn " onclick="addNote({{autoid}});">Add Note</button> \
+					<button class="btn btn--primary" data-action="ADD_TO_CART">Add To Cart</button>	\
+					</div>';
+	
+	var numberOfCol = array[0].length;
+	var csvindex = ["pId","pName","groupName","pPrice", "pDesc","imgSrc","pOption","pActive", "pRemark","spicy","ingredient"];
+	var ir = 0;
+    array.forEach(function(row) {
+	
+		if (ir !== 0 ){
+			var ic = 0;
+			var res = template;
+			var cond1 ='';
+			//autoid tag
+			res = res.replace(/{{autoid}}/g,ir);
+			row.forEach(function(cell) {
+
+					//alert("{{" +csvindex[ic] + "}} ==> " +cell);
+					if (csvindex[ic] == 'pOption' && cell !== ''){
+						var optionhtml = "";
+						var fields = cell.split('|');
+						//alert(fields.length);
+						var defchecked = 'checked';
+						var ix;
+						for (ix = 0; ix < fields.length; ix++) { 
+							if (ix !== 0){ 	defchecked = ''; } 
+						  optionhtml += '<input type="radio" id="2000'+ir+'" name="opt'+ir+'" value="'+fields[ix]+'" onclick="selectopt('+ir+')"'+defchecked+' /><label for="2000'+ir+'">'+fields[ix]+'</label>';
+						}
+						//res = res.replace("{{" +csvindex[ic] + "}}",  optionhtml );
+						res = res.split("{{pOption}}").join(optionhtml);
+					} else if (csvindex[ic] == 'spicy'){
+						if (cell !== '') {
+							var spicyhtml = 'Spicy: <div class="stars"><div class="percent" style="width:  '+cell*10+'%;"></div></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+							cond1 = "[Spicy:" + cell + "]";
+							//cond1 tag
+							res = res.replace(/{{cond1}}/g,cond1);
+							//res = res.replace("{{" +csvindex[ic] + "}}",  spicyhtml );
+							res = res.split("{{spicy}}").join(spicyhtml);
+						} else {
+										//cond1 tag reset
+							res = res.replace(/{{cond1}}/g,'');
+							//res = res.replace("{{" +csvindex[ic] + "}}",  "" );
+							res = res.split("{{spicy}}").join("");
+						}
+					} else {
+						//res = res.replaceAll("{{" +csvindex[ic] + "}}",  cell );
+						res = res.split("{{" +csvindex[ic] + "}}").join(cell);
+					}
+				ic++;
+							
+			});
+			gridhtml += res;	
+		}	
+		ir++;
+    });
+	//gridhtml += "<p id='finishelement' style='display:none;' >finish</p>";
+		gridhtml += '</div>';
+    document.getElementById("grid").innerHTML = gridhtml;
+}
+		readTextFile("./data/product.csv");
+		//readGoogleSheet("product");
+			
+function selectopt(vari) {
+	//document.querySelector('input[name="opt'+ vari+'"]:checked+label') { font-weight: bold; }
+	var opttag = document.querySelector('input[name="opt'+vari+'"]:checked+label').innerHTML;
+	var result = document.getElementById(vari).innerHTML.replace(/\[Meat:.*]$/, "");
+	document.getElementById(vari).innerHTML = result+ "[Meat:"+opttag+"]";
+	
+	var newprice = document.querySelector('input[name="opt'+vari+'"]:checked').value;
+	var resultprice = newprice.split(':');
+	if (resultprice[1]) {
+	document.getElementById("1000"+vari).innerHTML =  Number(document.getElementById("1000"+vari).getAttribute("baseprice")) + Number(resultprice[1]);
+	} else {
+	document.getElementById("1000"+vari).innerHTML =  Number(document.getElementById("1000"+vari).getAttribute("baseprice"));
+	}
+}
+ 
+function popimage(image){
+document.getElementById('popimg').src = image.src.replace("/small","");
+showpop(3);
+} 
+  
+ 
+function showpop(number){
+document.getElementsByClassName("container-popup")[0].style.display ="block";
+document.getElementsByClassName("popup"+number)[0].style.display ="block";
+}
+function hidepop(number){
+document.getElementsByClassName("container-popup")[0].style.display ="none";
+document.getElementsByClassName("popup"+number)[0].style.display ="none";
+}
+function hideallpop(){
+document.getElementsByClassName("container-popup")[0].style.display ="none";
+document.getElementsByClassName("popup1")[0].style.display ="none";
+document.getElementsByClassName("popup2")[0].style.display ="none";
+document.getElementsByClassName("popup3")[0].style.display ="none";
+}
+
+function initnote(){
+	
+$(".my-rating").starRating({
+    starSize: 25,
+	totalStars: 10,
+	disableAfterRate: false,
+    callback: function(currentRating, $el){
+        // make a server call here
+		spicy2textbox(currentRating);
+    }
+});
+
+}
+function addNote(curId){
+	document.getElementById("curId").innerHTML = curId;
+	var textname = $('#'+curId).text();
+	document.getElementById("notehead").innerHTML = textname;
+	//var ingredient = document.getElementById("3000"+curId).getAttribute("ingredient");
+
+	var spicySelected =  textname.match(/\[Spicy:(.*?)\]/);
+	if (spicySelected) {
+	$(".my-rating").starRating('setRating', spicySelected[0].replace("[Spicy:","").replace("]",""));
+	} else {
+	$(".my-rating").starRating('setRating',0);
+	}
+	var addednote =  textname.match(/\[Note:(.*?)\]/);
+	if(addednote) {
+		document.getElementById("ordnote").value = addednote[0].replace("[Note:","").replace("]","");
+	} else {
+		document.getElementById("ordnote").value = "";
+	}
+	showpop(1);
+}
+function note2textbox() {
+	var textid = document.getElementById("curId").innerHTML;
+	var notetext = "";
+	var textname = $('#'+textid).text();
+	textname = textname.replace(/\[Note:(.*?)\]/g, '');
+	if(document.getElementById("ordnote").value !=="") {
+		notetext =  "[Note:" + document.getElementById("ordnote").value+"]";
+		$('#'+textid).text(textname+notetext.replace(",",";"));
+		document.getElementById("notehead").innerHTML = textname+notetext.replace(",",";")
+	} else {
+	  $('#'+textid).text(textname);
+	  document.getElementById("notehead").innerHTML = textname;
+	
+	}
+}
+
+function spicy2textbox(spicy) {
+	var textid = document.getElementById("curId").innerHTML;
+	var selecttext =  "[Spicy:"+ spicy +"]" ;
+	var textname = $('#'+textid).text();
+	textname = textname.replace(/\[Spicy:(.*?)\]/g, '');
+	$('#'+textid).text(textname+selecttext);
+	document.getElementById("notehead").innerHTML = textname+selecttext;
+	var starHTML = 'Spicy: <div class="stars"><div class="percent" style="width:  '+spicy*10+'%;"></div></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+	$('#3000'+textid).html(starHTML);
+}
+
+</script>    
+</body>
+
+
+</html>	
