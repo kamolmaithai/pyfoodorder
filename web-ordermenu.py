@@ -6,8 +6,8 @@ from datetime import datetime
 
 app = Flask(__name__,
             static_url_path='', 
-            static_folder='web-ordermenu/static',
-            template_folder='web-ordermenu/templates')
+            static_folder='static',
+            template_folder='templates')
 
 @app.after_request
 def add_header(r):
@@ -30,19 +30,19 @@ def upload():
     isthisFile=request.files.get('file')
     #print(isthisFile)
     #print(isthisFile.filename)
-    isthisFile.save("web-ordermenu/static/data/"+isthisFile.filename)
+    isthisFile.save("static/data/"+isthisFile.filename)
     resp = jsonify(success=True)
     return resp
 
 @app.route('/getposid',methods=[ "GET",'POST'])
 def getposid():
-    with open('web-ordermenu/static/data/count.txt', 'r') as file:
+    with open('static/data/count.txt', 'r') as file:
          count = file.read().replace('\n', '')
     return count , 200, {'Content-Type': 'text/plain; charset=utf-8'}
 
 @app.route('/getconfig',methods=[ "GET",'POST'])
 def getconfig():
-    with open('web-ordermenu/static/data/config.csv', 'r') as file:
+    with open('static/data/config.csv', 'r') as file:
          text= file.read()
     return text , 200, {'Content-Type': 'text/plain; charset=utf-8'}
 
@@ -56,14 +56,14 @@ def gettimestamp():
 def addposcsv():
     postext = urllib.parse.unquote(request.form["CSV"])
     lines = postext.split("|||")
-    with open('web-ordermenu/static/data/pos.csv','a') as f:
+    with open('static/data/pos.csv','a') as f:
          for item in lines:
              f.write("%s\n" % item)
          f.close()
-    with open('web-ordermenu/static/data/count.txt', 'r') as file:
+    with open('static/data/count.txt', 'r') as file:
          count = file.read().replace('\n', '')
          file.close()
-    with open('web-ordermenu/static/data/count.txt', 'w') as file:
+    with open('static/data/count.txt', 'w') as file:
          file.write(str(int(count) + 1))
          file.close()
     resp = jsonify(success=True)
