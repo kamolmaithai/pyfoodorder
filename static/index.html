@@ -479,7 +479,15 @@ function spicy2textbox(spicy) {
 	var starHTML = 'Spicy: <div class="stars"><div class="percent" style="width:  '+spicy*10+'%;"></div></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 	$('#3000'+textid).html(starHTML);
 }
-
+	
+$(document). ready(function() { 
+var barelem = $(".row-2").offset();
+var pageelem = $(".row").offset();
+var gridelem = $("#grid").offset();
+$('.row-2').css({position: 'fixed', left: barelem.left +'px', top: barelem.top +'px','background-color': 'white','z-index': '100'});
+$(".row").css({position: 'fixed', left: pageelem.left +'px', top: pageelem.top +'px','background-color': 'white','z-index': '100'});
+$("#grid").css({position: 'absolute', left: gridelem.left +'px', top: gridelem.top +'px'});
+});
 </script>    
 </body>
 
